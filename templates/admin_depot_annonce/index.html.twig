@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DepotAnnonce index{% endblock %}
+
+{% block body %}
+    <h1>DepotAnnonce index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TitreAnnonce</th>
+                <th>DescriptionAnnonce</th>
+                <th>Lieu</th>
+                <th>DateDebut</th>
+                <th>Duree</th>
+                <th>TypeFormation</th>
+                <th>Renumeration</th>
+                <th>SpecialiteRecherche</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for depot_annonce in depot_annonces %}
+            <tr>
+                <td>{{ depot_annonce.id }}</td>
+                <td>{{ depot_annonce.titreAnnonce }}</td>
+                <td>{{ depot_annonce.descriptionAnnonce }}</td>
+                <td>{{ depot_annonce.Lieu }}</td>
+                <td>{{ depot_annonce.dateDebut ? depot_annonce.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ depot_annonce.duree }}</td>
+                <td>{{ depot_annonce.typeFormation }}</td>
+                <td>{{ depot_annonce.Renumeration }}</td>
+                <td>{{ depot_annonce.specialiteRecherche }}</td>
+                <td>
+                    <a href="{{ path('app_admin_depot_annonce_show', {'id': depot_annonce.id}) }}">show</a>
+                    <a href="{{ path('app_admin_depot_annonce_edit', {'id': depot_annonce.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_depot_annonce_new') }}">Create new</a>
+{% endblock %}

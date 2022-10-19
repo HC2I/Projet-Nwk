@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit DepotAnnonce{% endblock %}
+
+{% block body %}
+    <h1>Edit DepotAnnonce</h1>
+
+    {{ include('admin_depot_annonce/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_admin_depot_annonce_index') }}">back to list</a>
+
+    {{ include('admin_depot_annonce/_delete_form.html.twig') }}
+{% endblock %}
